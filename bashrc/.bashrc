@@ -16,6 +16,12 @@ ftext ()
 	grep -iIHrn --color=always "$1" . | less -r
 }
 
+# Simplified version of up. Prints current directory
+up() 
+{ 
+	cd $(eval printf '../'%.0s {1..$1}) && pwd; 
+}
 
 # PS1
-PS1='\h:\W \u\$ '
+#PS1='\h:\W \u\$ '
+PS1="\[\033[38;5;4m\]\h\[$(tput sgr0)\]\[\033[38;5;15m\]-\[$(tput sgr0)\]\[\033[38;5;166m\]\w\[$(tput sgr0)\]\[\033[38;5;15m\] > \[$(tput sgr0)\]"
